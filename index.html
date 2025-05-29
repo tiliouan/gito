@@ -29,6 +29,9 @@
             fr: {
                 title: "TopoLearn - Plateforme d'apprentissage en topographie",
                 accueil: "TopoLearn - Plateforme Marocaine d'Apprentissage de la Topographie",
+                appAnnouncement: "🎉 Nouvelle Application Mobile Disponible !",
+                appDescription: "Accédez à tous vos cours de topographie directement depuis votre smartphone. Téléchargez l'app TopoLearn maintenant !",
+                downloadApp: "Télécharger l'App",
                 probleme: "Problème à résoudre",
                 problemeList: [
                     "Difficile de trouver des cours clairs et structurés sur la topographie au Maroc",
@@ -143,6 +146,9 @@
             en: {
                 title: "TopoLearn - Moroccan Topography Learning Platform",
                 accueil: "TopoLearn - Moroccan Platform for Learning Topography",
+                appAnnouncement: "🎉 New Mobile App Available!",
+                appDescription: "Access all your topography courses directly from your smartphone. Download the TopoLearn app now!",
+                downloadApp: "Download App",
                 probleme: "Problem to solve",
                 problemeList: [
                     "Hard to find clear and structured courses on topography in Morocco",
@@ -257,6 +263,9 @@
             ar: {
                 title: "توبوليرن - منصة التعلم الطبوغرافي",
                 accueil: "توبوليرن - المنصة المغربية لتعلم الطبوغرافيا",
+                appAnnouncement: "🎉 تطبيق الهاتف المحمول الجديد متاح الآن!",
+                appDescription: "احصل على جميع دورات الطبوغرافيا مباشرة من هاتفك الذكي. حمل تطبيق توبوليرن الآن!",
+                downloadApp: "تحميل التطبيق",
                 probleme: "المشكلة المراد حلها",
                 problemeList: [
                     "صعوبة العثور على دورات واضحة ومنظمة حول الطبوغرافيا في المغرب",
@@ -376,6 +385,15 @@
         function applyLang(lang) {
             document.title = translations[lang].title;
             document.querySelector('#accueil h1').textContent = translations[lang].accueil;
+            
+            // Update app announcement section
+            const appAnnouncement = document.querySelector('.app-announcement h3');
+            const appDescription = document.querySelector('.app-announcement p');
+            const appButton = document.querySelector('.app-download-btn');
+            if (appAnnouncement) appAnnouncement.textContent = translations[lang].appAnnouncement;
+            if (appDescription) appDescription.textContent = translations[lang].appDescription;
+            if (appButton) appButton.textContent = translations[lang].downloadApp;
+            
             document.querySelector('.problem h3').textContent = translations[lang].probleme;
             const problemList = document.querySelector('.problem ul');
             problemList.innerHTML = '';
@@ -509,6 +527,14 @@
         <section id="accueil" class="section accueil">
             <div class="container">
                 <h1>TopoLearn - Plateforme Marocaine d'Apprentissage de la Topographie</h1>
+                
+                <!-- App Announcement -->
+                <div class="app-announcement">
+                    <h3>🎉 Nouvelle Application Mobile Disponible !</h3>
+                    <p>Accédez à tous vos cours de topographie directement depuis votre smartphone. Téléchargez l'app TopoLearn maintenant !</p>
+                    <a href="https://cdn.discordapp.com/attachments/1192221320331657387/1377553610958966805/Topolearn.apk?ex=68396246&is=683810c6&hm=64da8e2727bf4318f079ae593d607fabcd04787131255f543455fa0ee343b798&" target="_blank" class="app-download-btn">Télécharger l'App</a>
+                </div>
+                
                 <div class="problem">
                     <h3>Problème à résoudre</h3>
                     <ul>
