@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon abonnement - Noura - TopoLearn</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar" style="display: flex; align-items: center; justify-content: space-between;">
+            <a href="../index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="../logo.png" alt="TopoLearn Logo" style="height:48px;vertical-align:middle;"> TopoLearn
+            </a>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <button class="lang-btn" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" onclick="setLang('ar')">AR</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+        </nav>
+    </header>
+    <script>
+        const translations = {
+            fr: {
+                title: "Mon abonnement - Noura - TopoLearn",
+                heading: "Mon abonnement VIP 3 - Noura",
+                desc: "Vous bénéficiez de l'abonnement VIP 3 : Coaching individuel, accès aux événements exclusifs, priorisation totale du support.",
+                btn: "Voir les avantages VIP 3",
+                benefits: [
+                    "🎯 Préparation à un niveau avancé ou au marché de l’emploi",
+                    "🎥 Vidéos explicatives détaillées et pédagogiques",
+                    "🌐 Assistance à distance complète (Zoom / TeamViewer)",
+                    "📝 Suivi personnalisé du projet de fin de formation",
+                    "📘 Cours multilingues : français, darija marocaine, etc.",
+                    "💡 Assistance technique mensuelle (TeamViewer / Zoom)",
+                    "📺 Accès illimité aux vidéos et aux contenus pédagogiques",
+                    "📄 Exercices corrigés pour évaluer la progression",
+                    "🛠 Maîtrise d’outils avancés : AutoCAD, QGIS, CIVIL 3D, Robot Structural, etc.",
+                    "Accompagnement à la rédaction du rapport de fin de formation",
+                    "Préparation de l’examen de Fin de Formation",
+                    "Clé USB : Support de stockage remis à l’apprenant sur demande, contenant les logiciels pédagogiques (AutoCAD, QGIS, CIVIL 3D…) et les documents à installer localement ou via assistance à distance"
+                ],
+                pricing: "Tarifs & Services Additionnels",
+                installRemote: "Installation à distance",
+                installRemotePrice: "100 DH",
+                installUSB: "Installation par USB",
+                installUSBPrice: "50 DH",
+                softwareExplanation: "Explication des logiciels",
+                softwareExplanationPrice: "199 DH",
+                monthlySubscription: "Abonnements mensuels :",
+                vip1Price: "199 DH",
+                vip2Price: "499 DH",
+                vip3Price: "1000 DH",
+                trainingCenter: "Centre de formation :",
+                trainingCenterPrice: "1000 DH",
+                includedBenefits: "incluant les avantages de la formule par le mois."
+            },
+            en: {
+                title: "My Subscription - Noura - TopoLearn",
+                heading: "My VIP 3 Subscription - Noura",
+                desc: "You have VIP 3: Individual coaching, access to exclusive events, total support prioritization.",
+                btn: "See VIP 3 Benefits",
+                benefits: [
+                    "🎯 Preparation for advanced level or job market",
+                    "🎥 Detailed and educational explanatory videos",
+                    "🌐 Full remote assistance (Zoom / TeamViewer)",
+                    "📝 Personalized follow-up of the final project",
+                    "📘 Multilingual courses: French, Moroccan Darija, etc.",
+                    "💡 Monthly technical assistance (TeamViewer / Zoom)",
+                    "📺 Unlimited access to videos and educational content",
+                    "📄 Corrected exercises to assess progress",
+                    "🛠 Mastery of advanced tools: AutoCAD, QGIS, CIVIL 3D, Robot Structural, etc.",
+                    "Support for writing the final project report",
+                    "Preparation for the End of Training exam",
+                    "USB key: Storage device provided to the learner on request, containing educational software (AutoCAD, QGIS, CIVIL 3D…) and documents to install locally or via remote assistance"
+                ],
+                pricing: "Pricing & Additional Services",
+                installRemote: "Remote Installation",
+                installRemotePrice: "100 DH",
+                installUSB: "USB Installation",
+                installUSBPrice: "50 DH",
+                softwareExplanation: "Software Explanation",
+                softwareExplanationPrice: "199 DH",
+                monthlySubscription: "Monthly Subscriptions:",
+                vip1Price: "199 DH",
+                vip2Price: "499 DH",
+                vip3Price: "1000 DH",
+                trainingCenter: "Training Center:",
+                trainingCenterPrice: "1000 DH",
+                includedBenefits: "including the benefits of the formula per month."
+            },
+            ar: {
+                title: "اشتراكي VIP 3 - نورة - توبوليرن",
+                heading: "اشتراكي VIP 3 - نورة",
+                desc: "لديك اشتراك VIP 3: تدريب فردي، الوصول إلى أحداث حصرية، أولوية كاملة للدعم.",
+                btn: "عرض مزايا VIP 3",
+                benefits: [
+                    "🎯 التحضير لمستوى متقدم أو لسوق العمل",
+                    "🎥 فيديوهات توضيحية مفصلة وتربوية",
+                    "🌐 دعم عن بعد كامل (Zoom / TeamViewer)",
+                    "📝 متابعة شخصية لمشروع نهاية التكوين",
+                    "📘 دروس متعددة اللغات: الفرنسية، الدارجة المغربية، إلخ.",
+                    "💡 دعم تقني شهري (TeamViewer / Zoom)",
+                    "📺 وصول غير محدود للفيديوهات والمحتوى التعليمي",
+                    "📄 تمارين مصححة لتقييم التقدم",
+                    "🛠 إتقان الأدوات المتقدمة: AutoCAD، QGIS، CIVIL 3D، Robot Structural، إلخ.",
+                    "مرافقة في كتابة تقرير نهاية التكوين",
+                    "التحضير لامتحان نهاية التكوين",
+                    "مفتاح USB: وسيلة تخزين تُسلم للمتعلم عند الطلب، تحتوي على البرامج التعليمية (AutoCAD، QGIS، CIVIL 3D…) والوثائق للتثبيت محليًا أو عبر الدعم عن بعد"
+                ],
+                pricing: "التسعير والخدمات الإضافية",
+                installRemote: "التثبيت عن بُعد",
+                installRemotePrice: "100 درهم",
+                installUSB: "تثبيت عبر USB",
+                installUSBPrice: "50 درهم",
+                softwareExplanation: "شرح البرامج",
+                softwareExplanationPrice: "199 درهم",
+                monthlySubscription: "الاشتراكات الشهرية:",
+                vip1Price: "199 درهم",
+                vip2Price: "499 درهم",
+                vip3Price: "1000 درهم",
+                trainingCenter: "مركز التدريب:",
+                trainingCenterPrice: "1000 درهم",
+                includedBenefits: "بما في ذلك مزايا الخطة شهريًا."
+            }
+        };
+        function setLang(lang) {
+            localStorage.setItem('topolearn_lang', lang);
+            applyLang(lang);
+        }
+        function applyLang(lang) {
+            document.title = translations[lang].title;
+            document.querySelector('h2').textContent = translations[lang].heading;
+            document.querySelector('.container p').innerHTML = translations[lang].desc;
+            document.querySelector('.container a').textContent = translations[lang].btn;
+            // Show only VIP 3 benefits
+            let ul = document.querySelector('.vip-benefits');
+            if (!ul) {
+                ul = document.createElement('ul');
+                ul.className = 'vip-benefits';
+                document.querySelector('.container').appendChild(ul);
+            }
+            ul.innerHTML = '';
+            translations[lang].benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.innerHTML = benefit;
+                ul.appendChild(li);
+            });
+            if(lang === 'ar') {
+                document.body.dir = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.dir = 'ltr';
+                document.body.style.textAlign = '';
+            }
+        }
+        window.onload = function() {
+            const lang = localStorage.getItem('topolearn_lang') || 'fr';
+            applyLang(lang);
+        };
+    </script>
+    <div class="container">
+        <h2>Mon abonnement VIP 3 - Noura</h2>
+        <p>Vous bénéficiez de l'abonnement VIP 3 : Coaching individuel, accès aux événements exclusifs, priorisation totale du support.</p>
+        <a href="../mysubscription.html" class="cta-btn">Voir les avantages VIP 3</a>
+        <ul class="vip-benefits"></ul>
+    </div>
+</body>
+</html>

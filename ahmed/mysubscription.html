@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon abonnement - Ahmed - TopoLearn</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar" style="display: flex; align-items: center; justify-content: space-between;">
+            <a href="../index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="../logo.png" alt="TopoLearn Logo" style="height:48px;vertical-align:middle;"> TopoLearn
+            </a>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <button class="lang-btn" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" onclick="setLang('ar')">AR</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+        </nav>
+    </header>
+    <script>
+        const translations = {
+            fr: {
+                title: "Mon abonnement - Ahmed - TopoLearn",
+                heading: "Mon abonnement VIP II - Ahmed",
+                desc: "Vous bénéficiez de l'abonnement VIP II : Formations privées en petits groupes, support technique avancé.",
+                btn: "Voir les avantages VIP II",
+                benefits: [
+                    "Comprend tous les avantages du VIP 1",
+                    "💬 Assistance directe via WhatsApp",
+                    "📚 Fichiers PDF pour chaque séance",
+                    "📂 Modèles de rapports de stage en topographie",
+                    "🧑‍🏫 Formations en direct – en individuel ou en groupe",
+                    "Support technique pour l’installation des logiciels topographiques"
+                ],
+                pricing: "Tarifs & Services Additionnels",
+                installRemote: "Installation à distance",
+                installRemotePrice: "100 DH",
+                installUSB: "Installation par USB",
+                installUSBPrice: "50 DH",
+                softwareExplanation: "Explication des logiciels",
+                softwareExplanationPrice: "199 DH",
+                monthlySubscription: "Abonnements mensuels :",
+                vip1Price: "199 DH",
+                vip2Price: "499 DH",
+                vip3Price: "1000 DH",
+                trainingCenter: "Centre de formation :",
+                trainingCenterPrice: "1000 DH",
+                includedBenefits: "incluant les avantages de la formule par le mois."
+            },
+            en: {
+                title: "My Subscription - Ahmed - TopoLearn",
+                heading: "My VIP II Subscription - Ahmed",
+                desc: "You have VIP II: Private group training, advanced technical support.",
+                btn: "See VIP II Benefits",
+                benefits: [
+                    "Includes all VIP 1 benefits",
+                    "💬 Direct assistance via WhatsApp",
+                    "📚 PDF files for each session",
+                    "📂 Internship report templates in topography",
+                    "🧑‍🏫 Live training – individual or group",
+                    "Technical support for installing topography software"
+                ],
+                pricing: "Pricing & Additional Services",
+                installRemote: "Remote Installation",
+                installRemotePrice: "100 DH",
+                installUSB: "USB Installation",
+                installUSBPrice: "50 DH",
+                softwareExplanation: "Software Explanation",
+                softwareExplanationPrice: "199 DH",
+                monthlySubscription: "Monthly Subscriptions:",
+                vip1Price: "199 DH",
+                vip2Price: "499 DH",
+                vip3Price: "1000 DH",
+                trainingCenter: "Training Center:",
+                trainingCenterPrice: "1000 DH",
+                includedBenefits: "including the benefits of the formula per month."
+            },
+            ar: {
+                title: "اشتراكي VIP II - أحمد - توبوليرن",
+                heading: "اشتراكي VIP II - أحمد",
+                desc: "لديك اشتراك VIP II: تدريبات خاصة في مجموعات صغيرة، دعم فني متقدم.",
+                btn: "عرض مزايا VIP II",
+                benefits: [
+                    "يشمل جميع مزايا VIP 1",
+                    "💬 دعم مباشر عبر WhatsApp",
+                    "📚 ملفات PDF لكل جلسة",
+                    "📂 نماذج تقارير تدريبية في الطبوغرافيا",
+                    "🧑‍🏫 تدريبات مباشرة – فردية أو جماعية",
+                    "دعم فني لتثبيت برامج الطبوغرافيا"
+                ],
+                pricing: "التسعير والخدمات الإضافية",
+                installRemote: "التثبيت عن بُعد",
+                installRemotePrice: "100 درهم",
+                installUSB: "تثبيت عبر USB",
+                installUSBPrice: "50 درهم",
+                softwareExplanation: "شرح البرامج",
+                softwareExplanationPrice: "199 درهم",
+                monthlySubscription: "الاشتراكات الشهرية:",
+                vip1Price: "199 درهم",
+                vip2Price: "499 درهم",
+                vip3Price: "1000 درهم",
+                trainingCenter: "مركز التدريب:",
+                trainingCenterPrice: "1000 درهم",
+                includedBenefits: "بما في ذلك مزايا الخطة شهريًا."
+            }
+        };
+        function setLang(lang) {
+            localStorage.setItem('topolearn_lang', lang);
+            applyLang(lang);
+        }
+        function applyLang(lang) {
+            document.title = translations[lang].title;
+            document.querySelector('h2').textContent = translations[lang].heading;
+            document.querySelector('.container p').innerHTML = translations[lang].desc;
+            document.querySelector('.container a').textContent = translations[lang].btn;
+            // Show only VIP 2 benefits
+            let ul = document.querySelector('.vip-benefits');
+            if (!ul) {
+                ul = document.createElement('ul');
+                ul.className = 'vip-benefits';
+                document.querySelector('.container').appendChild(ul);
+            }
+            ul.innerHTML = '';
+            translations[lang].benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.innerHTML = benefit;
+                ul.appendChild(li);
+            });
+            if(lang === 'ar') {
+                document.body.dir = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.dir = 'ltr';
+                document.body.style.textAlign = '';
+            }
+        }
+        window.onload = function() {
+            const lang = localStorage.getItem('topolearn_lang') || 'fr';
+            applyLang(lang);
+        };
+    </script>
+    <div class="container">
+        <h2>Mon abonnement VIP II - Ahmed</h2>
+        <p>Vous bénéficiez de l'abonnement VIP II : Formations privées en petits groupes, support technique avancé.</p>
+        <a href="../mysubscription.html" class="cta-btn">Voir les avantages VIP II</a>
+        <ul class="vip-benefits"></ul>
+    </div>
+</body>
+</html>

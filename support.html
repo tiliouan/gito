@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - TopoLearn</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .support-form {
+            max-width: 400px;
+            margin: 10vh auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(21,101,192,0.10);
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+        .support-form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .support-form input, .support-form textarea {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #90caf9;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .support-form button {
+            width: 100%;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .support-form button:hover {
+            background: #0d47a1;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #1976d2;
+            color: #fff;
+        }
+        .logo img {
+            height: 48px;
+            vertical-align: middle;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="logo.png" alt="TopoLearn Logo"> TopoLearn
+            </a>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <button class="lang-btn" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" onclick="setLang('ar')">AR</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+        </nav>
+    </header>
+    <form class="support-form" id="supportForm">
+        <h2>Support & Assistance</h2>
+        <input type="text" id="supportName" placeholder="Votre nom" required>
+        <input type="email" id="supportEmail" placeholder="Votre email" required>
+        <textarea id="supportMsg" placeholder="Décrivez votre problème ou question" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+    <script>
+        const translations = {
+            fr: {
+                title: "Support - TopoLearn",
+                heading: "Support & Assistance",
+                name: "Votre nom",
+                email: "Votre email",
+                msg: "Décrivez votre problème ou question",
+                btn: "Envoyer"
+            },
+            en: {
+                title: "Support - TopoLearn",
+                heading: "Support & Assistance",
+                name: "Your name",
+                email: "Your email",
+                msg: "Describe your problem or question",
+                btn: "Send"
+            },
+            ar: {
+                title: "الدعم - توبوليرن",
+                heading: "الدعم والمساعدة",
+                name: "اسمك",
+                email: "بريدك الإلكتروني",
+                msg: "صف مشكلتك أو سؤالك",
+                btn: "إرسال"
+            }
+        };
+        function setLang(lang) {
+            localStorage.setItem('topolearn_lang', lang);
+            applyLang(lang);
+        }
+        function applyLang(lang) {
+            document.title = translations[lang].title;
+            document.querySelector('h2').textContent = translations[lang].heading;
+            document.getElementById('supportName').placeholder = translations[lang].name;
+            document.getElementById('supportEmail').placeholder = translations[lang].email;
+            document.getElementById('supportMsg').placeholder = translations[lang].msg;
+            document.querySelector('.support-form button').textContent = translations[lang].btn;
+            if(lang === 'ar') {
+                document.body.dir = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.dir = 'ltr';
+                document.body.style.textAlign = '';
+            }
+        }
+        window.onload = function() {
+            const lang = localStorage.getItem('topolearn_lang') || 'fr';
+            applyLang(lang);
+        };
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('supportName').value.trim();
+            var email = document.getElementById('supportEmail').value.trim();
+            var msg = document.getElementById('supportMsg').value.trim();
+            var whatsappNumber = '212774225636';
+            var text = encodeURIComponent('Nom: ' + name + '\nEmail: ' + email + '\nMessage: ' + msg);
+            var waUrl = 'https://wa.me/' + whatsappNumber + '?text=' + text;
+            window.open(waUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
